@@ -11,5 +11,5 @@ const console2 = new console.Console(out, err);
 
 setInterval(() => {
   console2.log(new Date());
-  console2.error('Fan');
+  console2.error('Hoppsan');
 });
