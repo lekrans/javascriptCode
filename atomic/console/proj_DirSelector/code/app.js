@@ -1,11 +1,8 @@
 const util = require('util');
-
 const fs = require('fs');
 
 const path = require('path');
 const inquirer = require('inquirer');
-
-const directories = [];
 
 function chooseDirectory(defaultDirectory, directories) {
   return new Promise((resolve, reject) => {
@@ -14,13 +11,14 @@ function chooseDirectory(defaultDirectory, directories) {
       .prompt([
         {
           type: 'list',
-          name: 'primeFile',
+          name: 'outputfile',
           message: 'Choose PRIME project?',
           choices: [defaultDirectory, new inquirer.Separator(), ...directories],
         },
       ])
       .then((answers) => {
-        resolve(answers.primeFile);
+        // return the outputfile, the name is defined in the object above
+        resolve(answers.outputfile);
       });
   });
 }
