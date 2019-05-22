@@ -58,6 +58,10 @@ getDirectory()
 
     console.log(marked(text.toString()));
     cmd.get(`node ${dir}/app.js`, (err, data) => {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
       console.log(data);
     });
   })
