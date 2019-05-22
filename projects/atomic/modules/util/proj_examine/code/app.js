@@ -57,7 +57,6 @@ getDirectory()
     const text = fs.readFileSync(`${__dirname}/${dir}/README.md`);
 
     console.log(marked(text.toString()));
-
     cmd.get(`node ${dir}/app.js`, (err, data) => {
       console.log(data);
     });
