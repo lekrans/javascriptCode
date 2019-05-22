@@ -6,6 +6,13 @@ const TerminalRenderer = require("marked-terminal");
 const path = require("path");
 const inquirer = require("inquirer");
 
+function removeFromDir(name, directories) {
+  const index = directories.indexOf(name);
+  if (index !== -1) {
+    directories.splice(index, 1);
+  }
+}
+
 function chooseDirectory(defaultDirectory, directories) {
   return new Promise((resolve, reject) => {
     console.log("");
@@ -30,7 +37,9 @@ async function getDirectory() {
       .readdirSync(__dirname)
       .filter(f => fs.statSync(path.join(__dirname, f)).isDirectory());
 
-    const selectedProject = await chooseDirectory("dir2", directories);
+    removeFromDir("node_modules", directories);
+    removeFromDir("utils", directories);
+    const selectedProject = await chooseDirectory("", directories);
     return selectedProject;
   } catch (e) {}
 }
