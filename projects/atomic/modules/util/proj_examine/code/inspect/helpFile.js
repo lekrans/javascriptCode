@@ -34,3 +34,11 @@ exports.subHeader2 = s => {
   console.log(line);
   console.log(' ');
 };
+
+exports.runManual = (reason, folder) => {
+  console.log('');
+  console.log(line);
+  console.log('OBS!!!!!!!!!');
+  console.log('YOU HAVE TO RUN THIS MANUALLY becuse ', reason);
+  console.log(`node ./${folder}/app.js`);
+};
