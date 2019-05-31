@@ -1,7 +1,11 @@
 const log = require("./index.js");
 log.clear();
-setTimeout(() => {
-  log.header("hello header");
-  log.subHeader2("hello world");
-  log.subHeader1("and the last row");
-}, 10);
+log.header("hello header");
+log.subHeader2("hello world");
+log.subHeader1("and the last row");
+log.setColor(log.COLORS.FgLtMagenta, log.COLORS.BgLtGreen);
+log.line();
+log.log("hello world");
+log.setBgColor(log.COLORS.BgDefault);
+log.line();
+log.log("hello world");

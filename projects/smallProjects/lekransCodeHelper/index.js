@@ -46,78 +46,104 @@ exports.COLORS = {
   BgCyan: "\x1b[46m",
   BgWhite: "\x1b[47m",
   BgDefault: "\x1b[49m",
-  BgBlack: "\x1b[100m",
-  BgRed: "\x1b[101m",
-  BgGreen: "\x1b[102m",
-  BgYellow: "\x1b[103m",
-  BgBlue: "\x1b[104m",
-  BgMagenta: "\x1b[105m",
-  BgCyan: "\x1b[106m",
-  BgWhite: "\x1b[107m"
+  BgLtGray: "\x1b[100m",
+  BgLtRed: "\x1b[101m",
+  BgLtGreen: "\x1b[102m",
+  BgLtYellow: "\x1b[103m",
+  BgLtBlue: "\x1b[104m",
+  BgLtMagenta: "\x1b[105m",
+  BgLtCyan: "\x1b[106m",
+  BgLtWhite: "\x1b[107m"
 };
 
 let currentFgColor = exports.COLORS.FgDefault;
 let currentBgColor = exports.COLORS.BgDefault;
+let timeOutTime = 1;
+const TIME_OUT_ON_CLEAR = 15;
 
 const center = txt => {
   const start = slength / 2 - txt.length / 2;
   return `${" ".repeat(start)}${txt}`;
 };
 
+const colorize = txt => {
+  return `${currentFgColor}${currentBgColor}${txt}${exports.STATE.Reset}`;
+};
+
 exports.clear = () => {
   console.log("\x1Bc");
+  timeOutTime = TIME_OUT_ON_CLEAR;
+  setTimeout(() => {
+    timeOutTime = 1;
+  }, TIME_OUT_ON_CLEAR);
 };
 
 exports.line = () => {
-  console.log(line);
+  setTimeout(() => console.log(colorize(line)), timeOutTime);
 };
 
 exports.setColor = (fgColor, bgColor) => {
-  currentFgColor = fgColor;
-  currentBgColor = bgColor;
+  setTimeout(() => {
+    currentFgColor = fgColor;
+    currentBgColor = bgColor;
+  }, timeOutTime);
 };
 
 exports.setFgColor = color => {
-  currentFgColor = color;
+  setTimeout(() => (currentFgColor = color), timeOutTime);
 };
 
 exports.setBgColor = color => {
-  currentBgColor = color;
+  setTimeout(() => (currentBgColor = color), timeOutTime);
 };
 
 exports.header = s => {
-  console.log("\n".repeat(3));
-  console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
-  console.log("");
-  console.log(
-    `${exports.COLORS.FgLtCyan}${center(s).toUpperCase()}${
-      exports.COLORS.FgDefault
-    }`
-  );
-  console.log("");
-  console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
+  setTimeout(() => {
+    console.log("\n".repeat(3));
+    console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
+    console.log("");
+    console.log(
+      `${exports.COLORS.FgLtCyan}${center(s).toUpperCase()}${
+        exports.COLORS.FgDefault
+      }`
+    );
+    console.log("");
+    console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
+  }, timeOutTime);
 };
 
 exports.subHeader1 = s => {
-  console.log(" ");
-  console.log(star);
-  console.log(s);
-  console.log(star);
-  console.log("");
+  setTimeout(() => {
+    console.log(" ");
+    console.log(star);
+    console.log(s);
+    console.log(star);
+    console.log("");
+  }, timeOutTime);
 };
 
 exports.subHeader2 = s => {
-  console.log(exports.COLORS.FgLtGreen);
-  console.log(line);
-  console.log(s);
-  console.log(line);
-  console.log(exports.STATE.Reset);
+  setTimeout(() => {
+    console.log(exports.COLORS.FgLtGreen);
+    console.log(line);
+    console.log(s);
+    console.log(line);
+    console.log(exports.STATE.Reset);
+  }, timeOutTime);
 };
 
 exports.runManual = (reason, folder) => {
-  console.log("");
-  console.log(line);
-  console.log("OBS!!!!!!!!!");
-  console.log("YOU HAVE TO RUN THIS MANUALLY becuse ", reason);
-  console.log(`node ./${folder}/app.js`);
+  setTimeout(() => {
+    console.log("");
+    console.log(line);
+    console.log("OBS!!!!!!!!!");
+    console.log("YOU HAVE TO RUN THIS MANUALLY becuse ", reason);
+    console.log(`node ./${folder}/app.js`);
+  }, timeOutTime);
+};
+
+exports.log = s => {
+  setTimeout(() => {
+    console.log(colorize(s));
+  }, timeOutTime);
 };
