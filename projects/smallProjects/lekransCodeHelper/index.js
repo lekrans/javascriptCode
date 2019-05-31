@@ -1,30 +1,3 @@
-Reset = "\x1b[0m";
-Bright = "\x1b[1m";
-Dim = "\x1b[2m";
-Underscore = "\x1b[4m";
-Blink = "\x1b[5m";
-Reverse = "\x1b[7m";
-Hidden = "\x1b[8m";
-
-FgNone = null;
-FgBlack = "\x1b[30m";
-FgRed = "\x1b[31m";
-FgGreen = "\x1b[32m";
-FgYellow = "\x1b[33m";
-FgBlue = "\x1b[34m";
-FgMagenta = "\x1b[35m";
-FgCyan = "\x1b[36m";
-FgWhite = "\x1b[37m";
-
-BgBlack = "\x1b[40m";
-BgRed = "\x1b[41m";
-BgGreen = "\x1b[42m";
-BgYellow = "\x1b[43m";
-BgBlue = "\x1b[44m";
-BgMagenta = "\x1b[45m";
-BgCyan = "\x1b[46m";
-BgWhite = "\x1b[47m";
-
 const slength = 100;
 const line = "-".repeat(slength);
 // const underline = '_'.repeat(slength);
@@ -33,10 +6,13 @@ const hash = "#".repeat(slength);
 
 exports.STATE = {
   Reset: "\x1b[0m",
-  Bright: "\x1b[1m",
+  Bold: "\x1b[1m",
+  BoldOff: "\x1b[21m",
   Dim: "\x1b[2m",
-  Underscore: "\x1b[4m",
+  Underline: "\x1b[4m",
+  UnderlineOff: "\x1b[24m",
   Blink: "\x1b[5m",
+  BlinkOff: "\x1b[25m",
   Reverse: "\x1b[7m",
   Hidden: "\x1b[8m"
 };
@@ -51,6 +27,16 @@ exports.COLORS = {
   FgMagenta: "\x1b[35m",
   FgCyan: "\x1b[36m",
   FgWhite: "\x1b[37m",
+  FgDefault: "\x1b[39m",
+  FgLtGray: "\x1b[90m",
+  FgLtRed: "\x1b[91m",
+  FgLtGreen: "\x1b[92m",
+  FgLtYellow: "\x1b[93m",
+  FgLtBlue: "\x1b[94m",
+  FgLtMagenta: "\x1b[95m",
+  FgLtCyan: "\x1b[96m",
+  FgLtWhite: "\x1b[97m",
+
   BgBlack: "\x1b[40m",
   BgRed: "\x1b[41m",
   BgGreen: "\x1b[42m",
@@ -58,7 +44,16 @@ exports.COLORS = {
   BgBlue: "\x1b[44m",
   BgMagenta: "\x1b[45m",
   BgCyan: "\x1b[46m",
-  BgWhite: "\x1b[47m"
+  BgWhite: "\x1b[47m",
+  BgDefault: "\x1b[49m",
+  BgBlack: "\x1b[100m",
+  BgRed: "\x1b[101m",
+  BgGreen: "\x1b[102m",
+  BgYellow: "\x1b[103m",
+  BgBlue: "\x1b[104m",
+  BgMagenta: "\x1b[105m",
+  BgCyan: "\x1b[106m",
+  BgWhite: "\x1b[107m"
 };
 
 let currentColor = null;
