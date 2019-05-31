@@ -56,7 +56,13 @@ exports.COLORS = {
   BgWhite: "\x1b[107m"
 };
 
-let currentColor = null;
+let currentFgColor = exports.COLORS.FgDefault;
+let currentBgColor = exports.COLORS.BgDefault;
+
+const center = txt => {
+  const start = slength / 2 - txt.length / 2;
+  return `${" ".repeat(start)}${txt}`;
+};
 
 exports.clear = () => {
   console.log("\x1Bc");
@@ -80,14 +86,16 @@ exports.setBgColor = color => {
 };
 
 exports.header = s => {
+  console.log("\n".repeat(3));
+  console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
   console.log("");
+  console.log(
+    `${exports.COLORS.FgLtCyan}${center(s).toUpperCase()}${
+      exports.COLORS.FgDefault
+    }`
+  );
   console.log("");
-  console.log("");
-  console.log(hash);
-  console.log("");
-  console.log(s);
-  console.log("");
-  console.log(hash);
+  console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
 };
 
 exports.subHeader1 = s => {
@@ -99,12 +107,10 @@ exports.subHeader1 = s => {
 };
 
 exports.subHeader2 = s => {
-  console.log(exports.COLORS.FgRed);
-  console.log(" ");
+  console.log(exports.COLORS.FgLtGreen);
   console.log(line);
   console.log(s);
   console.log(line);
-  console.log(" ");
   console.log(exports.STATE.Reset);
 };
 
@@ -115,6 +121,3 @@ exports.runManual = (reason, folder) => {
   console.log("YOU HAVE TO RUN THIS MANUALLY becuse ", reason);
   console.log(`node ./${folder}/app.js`);
 };
-
-exports.subHeader2("hello world");
-exports.subHeader1("and the last row");
