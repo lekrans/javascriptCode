@@ -3,6 +3,7 @@ const line = "-".repeat(slength);
 // const underline = '_'.repeat(slength);
 const star = "*".repeat(slength);
 const hash = "#".repeat(slength);
+const util = require("util");
 
 exports.STATE = {
   Reset: "\x1b[0m",
@@ -144,8 +145,8 @@ exports.runManual = (reason, folder) => {
   }, timeOutTime);
 };
 
-exports.log = s => {
+exports.log = (data, ...args) => {
   setTimeout(() => {
-    console.log(colorize(s));
+    console.log(colorize(util.format(data, ...args)));
   }, timeOutTime);
 };

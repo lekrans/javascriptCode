@@ -8,4 +8,4 @@ log.line();
 log.log("hello world");
 log.setBgColor(log.COLORS.BgDefault);
 log.line();
-log.log("hello world");
+log.log("hello world", 1, 2, 3);
