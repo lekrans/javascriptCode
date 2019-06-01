@@ -100,25 +100,27 @@ exports.setBgColor = color => {
 exports.header = s => {
   setTimeout(() => {
     console.log("\n".repeat(3));
-    console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
+    console.log(
+      `${exports.COLORS.FgMagenta}${hash}${exports.COLORS.FgDefault}`
+    );
     console.log("");
     console.log(
-      `${exports.COLORS.FgLtCyan}${center(s).toUpperCase()}${
+      `${exports.COLORS.FgLtMagenta}${center(s).toUpperCase()}${
         exports.COLORS.FgDefault
       }`
     );
     console.log("");
-    console.log(`${exports.COLORS.FgLtBlue}${hash}${exports.COLORS.FgDefault}`);
+    console.log(
+      `${exports.COLORS.FgMagenta}${hash}${exports.COLORS.FgDefault}`
+    );
   }, timeOutTime);
 };
 
 exports.subHeader1 = s => {
   setTimeout(() => {
-    console.log(" ");
-    console.log(star);
-    console.log(s);
-    console.log(star);
-    console.log("");
+    console.log(`\n${exports.COLORS.FgBlue}${star}`);
+    console.log(`${exports.COLORS.FgLtCyan}${s}`);
+    console.log(`${exports.COLORS.FgBlue}${star}\n`);
   }, timeOutTime);
 };
 
