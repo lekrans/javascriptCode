@@ -9,3 +9,6 @@ log.log("hello world");
 log.setBgColor(log.COLORS.BgDefault);
 log.line();
 log.log("hello world", 1, 2, 3);
+log.footer("This is the foooter");
+log.comment("this is a comment");
+log.reset();
