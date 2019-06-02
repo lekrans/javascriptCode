@@ -153,7 +153,7 @@ const comment = s => {
   setTimeout(() => {
     console.log(`${COLORS.FgLtGray}${startComment}`);
     console.log(`${" ".repeat(3)}${s}`);
-    console.log(`${endComment}\n${currentFgColor}`);
+    console.log(`${endComment}${currentFgColor}`);
   }, timeOutTime);
 };
 

@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.17.3"
   },
   "dependencies": {
-    "lekrans_code_helper": "^1.0.0",
+    "lekrans_code_helper": "^1.0.1",
     "marked": "^0.6.2",
     "marked-terminal": "^3.2.0"
   }
