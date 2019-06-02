@@ -7,7 +7,7 @@ log.header(appName);
 log.subHeader1(
   `show the type of something.. NOTE that null returns "object" and "NaN" returns number
   ALSO NOTE that typeof is NOT a function.. it is an operator and that is why you can write
-  typeof('hello)  and typeof 'hello'`,
+  typeof('hello)  and typeof`,
 );
 log.subHeader2('typeof(1)');
 log.log(typeof 1);
