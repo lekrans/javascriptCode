@@ -1,0 +1,28 @@
+{
+  "name": "Resttest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "callbackify": "node ./callbackify/app.js"
+  },
+  "keywords": [],
+  "author": "Michael Lekrans",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "lekrans_code_helper": "^1.0.1",
+    "marked": "^0.6.2",
+    "marked-terminal": "^3.2.0",
+    "node-cmd": "^3.0.0",
+    "prompt-choices": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
+  }
+}

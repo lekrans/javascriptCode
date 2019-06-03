@@ -13,5 +13,6 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+      'import/no-extraneous-dependencies': 'off',
     }
 };
