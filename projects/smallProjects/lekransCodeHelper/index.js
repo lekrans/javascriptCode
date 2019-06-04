@@ -75,9 +75,6 @@ const colorize = txt => {
 const clear = () => {
   console.log("\x1Bc");
   timeOutTime = TIME_OUT_ON_CLEAR;
-  setTimeout(() => {
-    timeOutTime = 1;
-  }, TIME_OUT_ON_CLEAR);
 };
 
 const reset = () => {
