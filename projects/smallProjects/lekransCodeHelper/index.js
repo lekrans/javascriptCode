@@ -7,6 +7,7 @@ const startComment = "/* " + "-".repeat(slength - 3);
 const endComment = "-".repeat(slength - 3) + " */";
 
 const STATE = {
+  Clear: "\x1Bc",
   Reset: "\x1b[0m",
   Bold: "\x1b[1m",
   BoldOff: "\x1b[21m",
@@ -58,6 +59,12 @@ const COLORS = {
   BgLtWhite: "\x1b[107m"
 };
 
+const config = {
+  CLEAR_TIMEOUT: 100,
+  HEADER_BORDER_COLOR: COLORS.FgMagenta,
+  HEADER_TEXT_COLOR: COLORS.FgLtMagenta
+};
+
 let currentFgColor = COLORS.FgDefault;
 let currentBgColor = COLORS.BgDefault;
 let timeOutTime = 1;
@@ -73,101 +80,91 @@ const colorize = txt => {
 };
 
 const clear = () => {
-  console.log("\x1Bc");
-  timeOutTime = TIME_OUT_ON_CLEAR;
+  return new Promise((resolve, reject) => {
+    console.log(STATE.Clear);
+    try {
+      setTimeout(() => {
+        resolve();
+      }, config.CLEAR_TIMEOUT);
+    } catch (e) {
+      reject(e);
+    }
+  });
 };
 
 const reset = () => {
-  setTimeout(() => {
-    console.log(STATE.Reset);
-  }, timeOutTime);
+  console.log(STATE.Reset);
 };
 
 const line = () => {
-  setTimeout(() => console.log(colorize(sLine)), timeOutTime);
+  console.log(colorize(sLine));
 };
 
 const setColor = (fgColor, bgColor) => {
-  setTimeout(() => {
-    currentFgColor = fgColor;
-    currentBgColor = bgColor;
-  }, timeOutTime);
+  currentFgColor = fgColor;
+  currentBgColor = bgColor;
 };
 
 const setFgColor = color => {
-  setTimeout(() => (currentFgColor = color), timeOutTime);
+  currentFgColor = color;
 };
 
 const setBgColor = color => {
-  setTimeout(() => (currentBgColor = color), timeOutTime);
+  currentBgColor = color;
 };
 
 const header = s => {
-  setTimeout(() => {
-    console.log("\n".repeat(3));
-    console.log(`${COLORS.FgMagenta}${sHash}${COLORS.FgDefault}`);
-    console.log("");
-    console.log(
-      `${COLORS.FgLtMagenta}${center(s).toUpperCase()}${COLORS.FgDefault}`
-    );
-    console.log("");
-    console.log(`${COLORS.FgMagenta}${sHash}${COLORS.FgDefault}`);
-  }, timeOutTime);
+  console.log("\n".repeat(3));
+  console.log(`${config.HEADER_BORDER_COLOR}${sHash}${COLORS.FgDefault}`);
+  console.log("");
+  console.log(
+    `${config.HEADER_TEXT_COLOR}${center(s).toUpperCase()}${COLORS.FgDefault}`
+  );
+  console.log("");
+  console.log(`${config.HEADER_BORDER_COLOR}${sHash}${COLORS.FgDefault}`);
 };
 
 const subHeader1 = s => {
-  setTimeout(() => {
-    console.log(`\n${COLORS.FgBlue}${sStar}`);
-    console.log(`${COLORS.FgLtCyan}${s}`);
-    console.log(`${COLORS.FgBlue}${sStar}\n`);
-  }, timeOutTime);
+  console.log(`\n${COLORS.FgBlue}${sStar}`);
+  console.log(`${COLORS.FgLtCyan}${s}`);
+  console.log(`${COLORS.FgBlue}${sStar}\n`);
 };
 
 const subHeader2 = s => {
-  setTimeout(() => {
-    console.log(COLORS.FgLtGreen);
-    console.log(sLine);
-    console.log(s);
-    console.log(sLine);
-    console.log(STATE.Reset);
-  }, timeOutTime);
+  console.log(COLORS.FgLtGreen);
+  console.log(sLine);
+  console.log(s);
+  console.log(sLine);
+  console.log(STATE.Reset);
 };
 
 const footer = s => {
-  setTimeout(() => {
-    const spacing = " ".repeat(2);
-    const shortHash = "#".repeat(slength / 2 - s.length / 2 - spacing.length);
-    const fillCount =
-      slength - (shortHash.length * 2 + s.length + spacing.length * 2);
-    const preText = `\n${COLORS.FgMagenta}${shortHash}${spacing}`;
-    const text = `${COLORS.FgLtMagenta}${s.toUpperCase()}${COLORS.FgLtMagenta}`;
-    const postText = `${spacing}${shortHash}${"#".repeat(fillCount)}`;
-    console.log(`${preText}${text}${postText}${COLORS.FgDefault}\n\n`);
-  }, timeOutTime);
+  const spacing = " ".repeat(2);
+  const shortHash = "#".repeat(slength / 2 - s.length / 2 - spacing.length);
+  const fillCount =
+    slength - (shortHash.length * 2 + s.length + spacing.length * 2);
+  const preText = `\n${COLORS.FgMagenta}${shortHash}${spacing}`;
+  const text = `${COLORS.FgLtMagenta}${s.toUpperCase()}${COLORS.FgLtMagenta}`;
+  const postText = `${spacing}${shortHash}${"#".repeat(fillCount)}`;
+  console.log(`${preText}${text}${postText}${COLORS.FgDefault}\n\n`);
 };
 
 const comment = s => {
-  setTimeout(() => {
-    console.log(`${COLORS.FgLtGray}${startComment}`);
-    console.log(`${" ".repeat(3)}${s}`);
-    console.log(`${endComment}${currentFgColor}`);
-  }, timeOutTime);
+  console.log(`${COLORS.FgLtGray}${startComment}`);
+  console.log(`${" ".repeat(3)}${s}`);
+  console.log(`${endComment}${currentFgColor}`);
 };
 
 const runManual = (reason, folder) => {
-  setTimeout(() => {
-    console.log("");
-    console.log(sLine);
-    console.log("OBS!!!!!!!!!");
-    console.log("YOU HAVE TO RUN THIS MANUALLY becuse ", reason);
-    console.log(`node ./${folder}/app.js`);
-  }, timeOutTime);
+  console.log("");
+  console.log(sLine);
+  console.log("OBS!!!!!!!!!");
+  console.log("YOU HAVE TO RUN THIS MANUALLY becuse ", reason);
+  console.log(`node ./${folder}/app.js`);
 };
 
 const log = (data, ...args) => {
-  setTimeout(() => {
-    console.log(colorize(util.format(data, ...args)));
-  }, timeOutTime);
+  console.log(colorize(util.format(data, ...args)));
 };
 
 module.exports = {
@@ -185,5 +182,6 @@ module.exports = {
   setFgColor,
   line,
   clear,
-  reset
+  reset,
+  config
 };

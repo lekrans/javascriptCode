@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "inquirer": "^6.3.1",
-    "lekrans_code_helper": "^1.0.1",
     "marked": "^0.6.2",
     "marked-terminal": "^3.2.0",
     "node-cmd": "^3.0.0",

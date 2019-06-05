@@ -2,6 +2,7 @@ const cmd = require('node-cmd');
 const fs = require('fs');
 const marked = require('marked');
 const TerminalRenderer = require('marked-terminal');
+const log = require('lekrans_code_helper');
 
 const path = require('path');
 const inquirer = require('inquirer');
@@ -54,9 +55,8 @@ marked.setOptions({
 
 getDirectory()
   .then((dir) => {
+    console.log(log.STATE.Clear);
     const text = fs.readFileSync(`${__dirname}/${dir}/README.md`);
-
-    console.log(marked(text.toString()));
     cmd.get(`node ${dir}/app.js`, (err, data) => {
       if (err) {
         console.log(err);
@@ -66,5 +66,6 @@ getDirectory()
     });
   })
   .catch((e) => {
+    console.log('ERROR IN BASE');
     console.log(e);
   });
