@@ -56,7 +56,7 @@ marked.setOptions({
 getDirectory()
   .then((dir) => {
     console.log(log.STATE.Clear);
-    const text = fs.readFileSync(`${__dirname}/${dir}/README.md`);
+    // const text = fs.readFileSync(`${__dirname}/${dir}/README.md`);
     cmd.get(`node ${dir}/app.js`, (err, data) => {
       if (err) {
         console.log(err);

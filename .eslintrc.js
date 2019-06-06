@@ -13,6 +13,7 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    'import/no-extraneous-dependencies': 'off',
     'no-console': 'off',
     'max-len': 'off',
   },
