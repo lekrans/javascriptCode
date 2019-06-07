@@ -9,9 +9,9 @@ to a variable
 * Immediately Invoked: Execute the function immediately after it has been declared`);
 
 log.subHeader2('Assign a immideately invoked function to a variable');
-const app = (function app() {
+const app = (function () {
   const carId = 123;
-  log.log('in function ', carId);
+  log.log('in function');
   return {};
 }());
 
