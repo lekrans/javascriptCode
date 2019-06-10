@@ -5,7 +5,7 @@ const appName = 'bind';
 log.header(appName);
 
 log.subHeader1(
-  'Sometimes we need to make a COPY of the function AND change the THIS value',
+  'Sometimes we need to make a COPY of the function AND change the THIS value, the functions CONTEXT',
 );
 
 log.subHeader2(
