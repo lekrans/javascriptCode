@@ -3,7 +3,7 @@ const util = require('util');
 
 log.header('Arrow Function');
 log.subHeader1(`Arrow functions have lexical "this" wich mean that they get "this" from the environment
-where it is created unlike normal functions who gets "this" from the caller environment`);
+where it is created unlike normal functions who gets "this" from the environment they were created in`);
 
 log.subHeader2(
   'Test1 normal function get the name property from the object it is created in',
@@ -29,9 +29,9 @@ const bunny2 = {
       console.log(
         util.inspect(`${this.name} wants to ${task}`, { colors: true }),
       );
-      console.log(`this INSIDE forEach is ${util.inspect(this, { depth: 0 })}`);
+      console.log(`this INSIDE forEach is ${util.inspect(this, { depth: 0 })}`); // <= this = undefined
     });
-    console.log(`this outside forEach is ${util.inspect(this)}`);
+    console.log(`this outside forEach is ${util.inspect(this)}`); // <= this =  name: 'Usagi', tasks: [ 'transform', 'eat cake' ], showTasks: [Function: showTasks] }
   },
 };
 
