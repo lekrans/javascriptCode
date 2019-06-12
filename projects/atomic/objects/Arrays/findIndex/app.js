@@ -3,7 +3,10 @@ const log = require('lekrans_code_helper');
 const appName = 'findIndex';
 log.header(appName);
 
-log.subHeader1('Return the index of the first element that pass the test');
+log.subHeader1(`Return the index of the first element that pass the test
+The method expects an callback handling an expression in opposite to indexOf
+that takes a VALUE
+`);
 const objAry = [
   { name: 'Micke', age: 54 },
   { name: 'Jesper', age: 32 },
