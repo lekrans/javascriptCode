@@ -3,7 +3,11 @@ const log = require('lekrans_code_helper');
 const appName = 'findIndex';
 log.header(appName);
 
-log.subHeader1('List each item of an array, instead of a for loop');
+log.subHeader1(`Call a method for each element of the array
+NOTE: This will CHANGE the original array
+NOTE: the method is not called for elements without value
+
+Compare to .map() that do the same thing but will create a NEW array`);
 const objAry = [
   { name: 'Micke', age: 54 },
   { name: 'Jesper', age: 32 },
