@@ -1,6 +1,6 @@
 const log = require('lekrans_code_helper');
 
-const appName = 'reduce';
+const appName = 'reduceRight';
 log.header(appName);
 
 log.subHeader1(`reduce the array to a single value based on
