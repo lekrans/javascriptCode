@@ -1,6 +1,21 @@
 <!DOCTYPE html>
-<script type="module">
-  import { sayHi } from "./say.js";
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="namearea"></div>
+    <div id="carId"></div>
+    <!-- import the scripts.. NOTE we have to use the type="module" to let the broweser understand import/export syntax-->
+    <script type="module">
+      // import say.js.. NOTE we have to use .js extension because there is no bundler resolving the extension
+      import { sayHi } from "./say.js";
 
-  document.body.innerHTML = sayHi("John");
-</script>
+      document.getElementById("namearea").innerHTML = sayHi("John");
+    </script>
+    <script src="./main.js" type="module"></script>
+  </body>
+</html>
