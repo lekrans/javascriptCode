@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "inquirer": "^6.3.1",
-    "marked": "^0.6.2",
+    "marked": "^0.7.0",
     "marked-terminal": "^3.2.0",
     "node-cmd": "^3.0.0",
     "prompt-choices": "^5.0.0"
