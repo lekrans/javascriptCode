@@ -12,7 +12,7 @@
   "author": "Michael Lekrans",
   "license": "ISC",
   "dependencies": {
-    "marked": "^0.6.2",
+    "marked": "^4.0.10",
     "marked-terminal": "^3.2.0"
   },
   "devDependencies": {
